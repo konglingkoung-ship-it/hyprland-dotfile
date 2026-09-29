@@ -62,3 +62,24 @@ Before changing anything, the installer backs up Kitty, hyprland.lua/hyprland.co
 ```
 
 Serpantinum settings are backed up but not edited.
+
+
+## Project tools
+
+After installation:
+
+```bash
+./hybrid/status.sh
+```
+
+checks Hyprland, Kitty, Serpantinum, required commands, active config references, and config errors.
+
+If a future edit breaks the desktop:
+
+```bash
+./hybrid/rollback.sh
+```
+
+restores the newest timestamped backup created by the installer.
+
+`Super+W` now calls a small wallpaper helper which opens the native Serpantinum wallpaper UI. This keeps wallpaper control inside the Serpantinum look instead of replacing it with another shell.
