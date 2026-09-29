@@ -1,0 +1,13 @@
+{
+  "bar": {
+    "position": "top",
+    "width": 100,
+    "opacity": 65,
+    "style": "fill"
+  },
+  "theme": {
+    "fontFamily": "JetBrains Mono",
+    "borderRadius": 14,
+    "matugen": true
+  }
+}
