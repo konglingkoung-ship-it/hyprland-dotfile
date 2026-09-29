@@ -15,7 +15,8 @@ mkdir -p "$BACKUP" "$HOME/.config/kitty" "$HOME/.config/hypr/configs" "$HOME/.co
 # Kitty: mkhmtdots-like feel, but no forced shell.
 cp "$ROOT/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 cp "$ROOT/hypr/animated-wallpaper.sh" "$HOME/.config/hypr/scripts/animated-wallpaper.sh"
-chmod +x "$HOME/.config/hypr/scripts/animated-wallpaper.sh"
+cp "$ROOT/hypr/wallpaper-ui.sh" "$HOME/.config/hypr/scripts/wallpaper-ui.sh"
+chmod +x "$HOME/.config/hypr/scripts/animated-wallpaper.sh" "$HOME/.config/hypr/scripts/wallpaper-ui.sh"
 
 # Hyprland 0.55+ uses Lua. Prefer Lua when present.
 if [ -f "$HOME/.config/hypr/hyprland.lua" ]; then
