@@ -1,46 +1,53 @@
-# Serpantinum UI + mkhmtdots Controls
+# Finished Hybrid Desktop: Serpantinum UI + mkhmtdots Workflow
 
-Goal: **keep the Serpantinum look**, while using the workflow/controls from mkhmtdots.
+This setup is designed to be installed once from KDE/TTY and then be ready when you log into Hyprland.
 
-## What stays Serpantinum
+## Desktop ownership
 
-- top taskbar / shell
-- launcher UI
+**Serpantinum handles the visible shell/UI:**
+- top bar
+- launcher
 - wallpaper UI
-- notifications and shell popouts
-- theme and overall desktop appearance
-- Serpantinum settings.json is not changed by the installer
+- clipboard UI
+- system/network panels
+- lock UI
+- notifications/popouts
+- volume/brightness OSD
+- screenshots
 
-## What comes from mkhmtdots-style workflow
+**mkhmtdots-style workflow controls Hyprland:**
+- Super+T popup Kitty
+- Super+Shift+T normal Kitty
+- Super+Q close window
+- Super+E Thunar
+- Super+F floating
+- Super+arrows focus
+- Super+1..0 workspaces
+- Super+Shift+1..0 move window
 
-- Super+T: centered floating popup Kitty
-- Super+Shift+T: normal tiled Kitty
-- Super+Q: close focused window
-- Super+A: Serpantinum app launcher
-- Super+W: Serpantinum wallpaper UI
-- Super+E: Thunar
-- Super+F: toggle floating
-- Super+J: toggle split
-- Super+arrows: move focus
-- Super+1..0: switch workspaces
-- Super+Shift+1..0: move window to workspace
-- Super+mouse: move/resize
-- multimedia, brightness and screenshot binds
+Extra Serpantinum controls:
+- Super+A launcher
+- Super+W wallpaper
+- Super+V clipboard
+- Super+D system panel
+- Super+N network
+- Super+H guide
+- Super+R reload shell
+- Super+L lock
 
-## Hyprland Lua support
+## Automatic startup
 
-Current Hyprland (0.55+) uses `~/.config/hypr/hyprland.lua`.
-The installer detects this and installs `hybrid-keybinds.lua` automatically.
-It falls back to the old conf format only if no Lua config exists.
+The project installs a Hyprland Lua autostart file. On Hyprland login it automatically starts:
+- serpantinumd
+- clipboard text watcher
+- clipboard image watcher
+- EasyEffects when installed
 
-## Kitty
+No manual `serpantinumd start` is required after login.
 
-Kitty uses a mkhmtdots-inspired transparent style without forcing `/usr/bin/zsh`.
-Super+T uses class `popup-kitty`, with a Hyprland Lua window rule that makes it floating, centered and 900x600.
+## Install/update
 
-## Install from TTY / console
-
-You do not need to be inside Hyprland:
+From KDE or TTY:
 
 ```bash
 cd ~/hyprland-dotfile
@@ -51,35 +58,28 @@ chmod +x hybrid/install.sh
 ./hybrid/install.sh
 ```
 
-Then start/log into Hyprland normally.
+Then log out of KDE and choose Hyprland.
 
 ## Safety
 
-Before changing anything, the installer backs up Kitty, hyprland.lua/hyprland.conf, and Serpantinum settings under:
+Every install makes a timestamped backup in:
 
 ```
 ~/.config-backups/hybrid-serpantinum-mkhmtdots-<timestamp>/
 ```
 
-Serpantinum settings are backed up but not edited.
-
-
-## Project tools
-
-After installation:
+Rollback:
 
 ```bash
-./hybrid/status.sh
-```
-
-checks Hyprland, Kitty, Serpantinum, required commands, active config references, and config errors.
-
-If a future edit breaks the desktop:
-
-```bash
+cd ~/hyprland-dotfile
+chmod +x hybrid/rollback.sh
 ./hybrid/rollback.sh
 ```
 
-restores the newest timestamped backup created by the installer.
+Status check:
 
-`Super+W` now calls a small wallpaper helper which opens the native Serpantinum wallpaper UI. This keeps wallpaper control inside the Serpantinum look instead of replacing it with another shell.
+```bash
+cd ~/hyprland-dotfile
+chmod +x hybrid/status.sh
+./hybrid/status.sh
+```
