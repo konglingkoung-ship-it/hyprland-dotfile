@@ -18,7 +18,7 @@ hl.window_rule({
 
 -- Serpantinum keeps all visual/UI duties
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("serpantinum msg open applauncher"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("serpantinum msg open wallpaper"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/wallpaper-ui.sh"))
 
 -- mkhmtdots-style app/window controls
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("thunar"))
